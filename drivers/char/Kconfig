@@ -342,6 +342,24 @@ config UV_MMTIMER
 
 source "drivers/char/tpm/Kconfig"
 
+config SPDM
+	tristate "SPDM (Security Protocol and Data Model) character-device core"
+	help
+	  Vendor-independent core that owns the lifecycle of /dev/spdmN
+	  character-device nodes used to relay SPDM (Security Protocol and
+	  Data Model, a DMTF standard for device authentication, firmware
+	  measurement, and secure sessions) messages to a responder.
+
+	  Vendor drivers register with this core, supplying callbacks for the
+	  actual SPDM operations. The core owns node creation/deletion and the
+	  char-device file operations; it performs no payload allocation and no
+	  SPDM communication of its own.
+
+	  To compile this as a module, choose M here: the module will be called
+	  spdm.
+
+	  If unsure, say N.
+
 config TELCLOCK
 	tristate "Telecom clock driver for ATCA SBC"
 	depends on X86
