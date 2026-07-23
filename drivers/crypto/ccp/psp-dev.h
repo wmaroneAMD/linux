@@ -33,7 +33,8 @@ union psp_cap_register {
 			     tee			:1,
 			     dbc_thru_ext		:1,
 			     sfs			:1,
-			     rsvd1			:3,
+			     spdm			:1,
+			     rsvd1			:2,
 			     security_reporting		:1,
 			     fused_part			:1,
 			     boot_integrity		:1,
@@ -70,6 +71,7 @@ struct psp_device {
 	void *platform_access_data;
 	void *dbc_data;
 	void *sfs_data;
+	void *spdm_data;
 
 	union psp_cap_register capability;
 };
